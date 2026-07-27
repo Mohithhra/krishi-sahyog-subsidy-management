@@ -14,6 +14,7 @@ let subsidies = [
     record_id: 'S001',
     farmer_id: 'F001',
     farmer_name: 'Rajesh Kumar',
+    phone_number: '0987654321',
     village: 'Ramnagar',
     input_type: 'Seed',
     entitlement_qty: 10,
@@ -26,6 +27,7 @@ let subsidies = [
     record_id: 'S002',
     farmer_id: 'F002',
     farmer_name: 'Suresh Patel',
+    phone_number: '1234567890',
     village: 'Shyamnagar',
     input_type: 'Fertilizer',
     entitlement_qty: 20,
@@ -38,6 +40,7 @@ let subsidies = [
     record_id: 'S003',
     farmer_id: 'F003',
     farmer_name: 'Anita Sharma',
+    phone_number: '0987123456',
     village: 'Ramnagar',
     input_type: 'Seed',
     entitlement_qty: 15,
@@ -50,6 +53,7 @@ let subsidies = [
     record_id: 'S004',
     farmer_id: 'F004',
     farmer_name: 'Ramesh Singh',
+    phone_number: '7890654321',
     village: 'Krishnanagar',
     input_type: 'Pesticide',
     entitlement_qty: 5,
@@ -62,6 +66,7 @@ let subsidies = [
     record_id: 'S005',
     farmer_id: 'F005',
     farmer_name: 'Sushma Devi',
+    phone_number: '7890123456',
     village: 'Shyamnagar',
     input_type: 'Fertilizer',
     entitlement_qty: 25,
@@ -74,6 +79,7 @@ let subsidies = [
     record_id: 'S006',
     farmer_id: 'F006',
     farmer_name: 'Mohan Singh',
+    phone_number: '1234509876',
     village: 'Krishnanagar',
     input_type: 'Fertilizer',
     entitlement_qty: 30,
@@ -86,6 +92,7 @@ let subsidies = [
     record_id: 'S007',
     farmer_id: 'F007',
     farmer_name: 'Priya Patel',
+    phone_number:'2345167809',
     village: 'Ramnagar',
     input_type: 'Seed',
     entitlement_qty: 8,
@@ -98,6 +105,7 @@ let subsidies = [
     record_id: 'S008',
     farmer_id: 'F008',
     farmer_name: 'Ravi Kumar',
+    phone_number:'9089786756',
     village: 'Shyamnagar',
     input_type: 'Pesticide',
     entitlement_qty: 4,
@@ -110,6 +118,7 @@ let subsidies = [
     record_id: 'S009',
     farmer_id: 'F009',
     farmer_name: 'Geeta Devi',
+    phone_number:'1213141516',
     village: 'Krishnanagar',
     input_type: 'Fertilizer',
     entitlement_qty: 25,
@@ -122,6 +131,7 @@ let subsidies = [
     record_id: 'S010',
     farmer_id: 'F010',
     farmer_name: 'Sunil Singh',
+    phone_number:'2132435465',
     village: 'Ramnagar',
     input_type: 'Seed',
     entitlement_qty: 12,
@@ -161,10 +171,10 @@ app.get('/api/subsidies/:record_id', (req, res) => {
 
 // POST (Add) a new subsidy
 app.post('/api/subsidies', (req, res) => {
-  const { farmer_id, farmer_name, village, input_type, entitlement_qty, issued_qty, issue_date, officer_name } = req.body;
+  const { farmer_id, farmer_name, phone_number,village, input_type, entitlement_qty, issued_qty, issue_date, officer_name } = req.body;
   
   // VALIDATION: Check all required fields
-  if (!farmer_id || !farmer_name || !village || !input_type || !entitlement_qty || issued_qty === undefined) {
+  if (!farmer_id || !farmer_name || !phone_number||!village || !input_type || !entitlement_qty || issued_qty === undefined) {
     return res.status(400).json({ error: 'All fields are required!' });
   }
   
@@ -181,6 +191,7 @@ app.post('/api/subsidies', (req, res) => {
     record_id: `S${Date.now()}`,
     farmer_id,
     farmer_name,
+    phone_number,
     village,
     input_type,
     entitlement_qty: parseFloat(entitlement_qty),
